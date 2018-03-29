@@ -1,0 +1,66 @@
+@startuml classuml
+
+class point
+class food
+food <-* point
+class snakeNode
+snakeNode <-* point
+snakeNode <-* snakeNode
+class snake
+snake <-* snakeNode
+snake <.. food
+class game
+game <-* snake
+game <-* food
+
+class point{
+    x
+    y
+    next(direction)
+}
+
+class food{
+    point
+}
+
+class snakeNode{
+    point
+    pervNode
+    NextNode
+    append(snakeNode)
+    setPerv(pervNode)
+    setNext(nextNode)
+}
+
+class snake{
+    scopex
+    scopey
+    nodes
+    direction
+    move(direction)
+    eat(food)
+}
+
+class game{
+    width
+    height
+    size
+    speed
+    snakeLength
+    direction
+    isEnd
+    snake
+    timer
+    food
+
+    drawBoard()
+    drawFood()
+    drawSnake()
+    init()
+    createFood()
+    createSnake()
+    start()
+    move()
+}
+
+@enduml

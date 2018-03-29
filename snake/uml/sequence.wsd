@@ -1,0 +1,16 @@
+@startuml sequence
+
+actor browser
+browser -> game:start
+game -> snake:create
+game -> food:create
+snake -> snakenode:create
+loop speed
+    browser -> game:move
+    game -> snake:move
+    snake -> game:alive,iseat
+    game -> browser:drawBoard,drawFood,drawSnake,iDie,getScore
+end
+
+
+@enduml
